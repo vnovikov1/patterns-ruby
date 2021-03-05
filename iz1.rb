@@ -21,3 +21,16 @@ end
 
 puts method1(6)
 
+def method2(num)
+    sum = 0 
+    while num != 0 do
+        a = num % 10
+        if a % 2 != 0 && a > 3 then
+            sum += a
+        end
+        num /= 10
+    end
+    return sum
+end
+
+puts method2(3572)
