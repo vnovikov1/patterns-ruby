@@ -19,8 +19,6 @@ def method1(num)
     return sum
 end
 
-puts method1(6)
-
 def method2(num)
     sum = 0 
     while num != 0 do
@@ -33,4 +31,31 @@ def method2(num)
     return sum
 end
 
+def method3(num1)
+    pr = 1
+    
+    def sum_of_digits(num)
+        sum = 0
+        while num != 0 do
+            a = num % 10
+            sum += a
+            num /= 10
+        end
+        return sum
+    end
+
+    sum1 = sum_of_digits(num1)
+
+    for i in 2..num1
+        if num1 % i == 0 then 
+            if sum_of_digits(i) < sum1 then
+                pr *= i
+            end
+        end
+    end
+    return pr
+end
+
+puts method1(6)
 puts method2(3572)
+puts method3(150)
