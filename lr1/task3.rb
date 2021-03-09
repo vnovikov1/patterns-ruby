@@ -1,8 +1,7 @@
-puts "Your favorite language?"
-language = gets.chomp
+puts "#{ARGV[0]}, input command of OS?"
+oscommand = STDIN.gets.chomp
+system(oscommand)
 
-if language == "ruby"
-    puts "you podliza"
-else
-    puts "Skoro budet ruby"
-end
+puts "#{ARGV[0]}, input command of RUBY?"
+rubycommand = STDIN.gets.chomp
+system("ruby -e \"#{rubycommand}\"")
