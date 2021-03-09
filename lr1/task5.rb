@@ -1,5 +1,4 @@
-puts 'введите число: '
-num = gets.chomp.to_i
+num = ARGV[0].to_i
 sum = 0
 
 while num != 0 do
