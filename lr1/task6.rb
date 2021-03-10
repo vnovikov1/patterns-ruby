@@ -1,4 +1,5 @@
 def sum(num)
+    num = num.to_i
     sum = 0
     while num != 0 do
         a = num % 10
@@ -9,6 +10,7 @@ def sum(num)
 end
 
 def proizv(num)
+    num = num.to_i
     pr = 1 
     while num != 0 do
         a = num % 10
@@ -19,6 +21,7 @@ def proizv(num)
 end
 
 def min(num)
+    num = num.to_i
     min = num % 10
     num /= 10
     while num != 0 do
@@ -32,6 +35,7 @@ def min(num)
 end
 
 def max(num)
+    num = num.to_i
     max = num % 10
     num /= 10
     while num != 0 do
@@ -44,7 +48,7 @@ def max(num)
     return max
 end
 
-num = gets.chomp.to_i
+num = ARGV[0]
 
 puts sum(num)
 puts proizv(num)
