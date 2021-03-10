@@ -134,7 +134,6 @@ def select_method(argv)
 
     if !noMethod.empty?
         puts "Таких методов не существует: #{noMethod} \nВведите '-h' для получения помощи"
-        puts 
     end
 end
 
