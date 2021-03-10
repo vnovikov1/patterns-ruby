@@ -91,43 +91,51 @@ def method3(num)
     return pr
 end
 
-def select_method(method, num)
-    case method
-    when 'sum'
-        return "Сумма цифр числа #{num}: " + sum_of_digits(num).to_s
-    when 'product'
-        return "Произведение цифр числа #{num}: " + product_of_digits(num).to_s
-    when 'min'
-        return "Минимальная цифра в числе #{num}: " + min(num).to_s
-    when 'max'
-        return "Максимальная цифра в числе #{num}: " + max(num).to_s
-    when 'method1'
-        return "Сумма простых делителей числа #{num}: " + method1(num).to_s
-    when 'method2'
-        return "Количество нечетных цифр в числе #{num}, больших 3: " + method2(num).to_s
-    when 'method3'
-        return "Прозведение делителей числа, сумма цифр которых меньше, чем сумма цифр исходного числа #{num}: " + method3(num).to_s
-    else
-    "Такого метода не существует (#{method}) \nСписок доступных методов:\nsum - сумма цифр числа
-product - произведение цифр числа
-min - минимальная цифра в числе
-max - максимальная цифра в числе
-method1 - сумма простых делителей числа 
-method2 - количество нечетных цифр в числе, больших 3
-method3 - прозведение делителей числа, сумма цифр которых меньше, чем сумма цифр исходного числа"
+def select_method(argv)
+    noMethod = []
+
+    if argv[0] == '-h'
+        return "Список доступных методов:\n1 - sum - сумма цифр числа
+2 - product - произведение цифр числа
+3 - min - минимальная цифра в числе
+4 - max - максимальная цифра в числе
+5 - method1 - сумма простых делителей числа 
+6 - method2 - количество нечетных цифр в числе, больших 3
+7 - method3 - прозведение делителей числа, сумма цифр которых меньше, чем сумма цифр исходного числа"
+    end
+
+    if !argv.empty? then
+        print 'Введите число: '
+        num = STDIN.gets.chomp.to_i
+
+        for item in argv
+            case item
+            when '1'
+                puts "Сумма цифр числа #{num}: " + sum_of_digits(num).to_s
+            when '2'
+                puts "Произведение цифр числа #{num}: " + product_of_digits(num).to_s
+            when '3'
+                puts "Минимальная цифра в числе #{num}: " + min(num).to_s
+            when '4'
+                puts "Максимальная цифра в числе #{num}: " + max(num).to_s
+            when '5'
+                puts "Сумма простых делителей числа #{num}: " + method1(num).to_s
+            when '6'
+                puts "Количество нечетных цифр в числе #{num}, больших 3: " + method2(num).to_s
+            when '7'
+                puts "Прозведение делителей числа, сумма цифр которых меньше, чем сумма цифр исходного числа #{num}: " + method3(num).to_s
+            else
+                if item != '-h'
+                    noMethod.push(item)
+                end
+            end
+        end
+    end
+
+    if !noMethod.empty?
+        puts "Таких методов не существует: #{noMethod} \nВведите '-h' для получения помощи"
+        puts 
     end
 end
 
-puts "Список доступных методов:\nsum - сумма цифр числа
-product - произведение цифр числа
-min - минимальная цифра в числе
-max - максимальная цифра в числе
-method1 - сумма простых делителей числа 
-method2 - количество нечетных цифр в числе, больших 3
-method3 - прозведение делителей числа, сумма цифр которых меньше, чем сумма цифр исходного числа" 
-print 'Введите метод: '
-method = gets.chomp
-print 'Введите число: '
-num = gets.chomp.to_i
-
-puts select_method(method, num)
+puts select_method(ARGV)
