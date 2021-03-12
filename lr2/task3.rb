@@ -5,7 +5,7 @@ def input(amount)
     puts "Введите список из #{amount} элементов: "
     for item in 1..amount
         item = STDIN.gets.chomp
-        arr << item
+        arr.append(item)
     end
 
     return arr
