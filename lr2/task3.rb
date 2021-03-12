@@ -5,8 +5,14 @@ def input(amount)
     puts "Введите список из #{amount} элементов: "
     for item in 1..amount
         item = STDIN.gets.chomp
-        arr.unshift(item)
+        arr.push(item)
     end
+
+    print "Индекс элемента, после которого вставить новый элемент: "
+    k = STDIN.gets.chomp.to_i
+    print "Введите элемент: "
+    item = STDIN.gets.chomp
+    arr.insert(k, item)
 
     return arr
 end
