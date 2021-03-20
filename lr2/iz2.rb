@@ -21,29 +21,14 @@ def method1
     arr = iff(path)
     max = arr[0]
 
-    for item in arr
-        if item >= max
-            max = item
+    for i in 0...arr.size
+        if arr[i] >= max
+            max = arr[i]
+            index = i
         end
     end
 
-    flag = FALSE
-    count = -1
-
-    for index in 0...arr.size
-        if arr[index] == max
-            count = -1
-            flag = FALSE
-            saveindex = index
-            flag = TRUE
-        end
-
-        if flag == TRUE
-            count += 1
-        end
-    end
-
-    return count
+    return arr.size - index - 1
 end
 
 print method1
