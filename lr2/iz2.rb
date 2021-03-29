@@ -31,5 +31,27 @@ def method1
     return arr.size - index - 1
 end
 
-print method1
-#arr 1 2 3 4 1 1 4 1 1 1 1
+def method13
+    path = 'task4text.txt'
+    arr = iff(path)
+    min = arr[0]
+
+    for i in 0...arr.size
+        if arr[i] <= min
+            min = arr[i]
+            index = i
+        end
+    end
+    
+    for i in 0...arr.size
+        if i < index
+            arr.push(arr[i])
+        end
+    end
+
+    arr = arr.slice(index..arr.size)
+
+    return arr
+end
+
+print method13
