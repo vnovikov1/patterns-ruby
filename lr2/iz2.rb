@@ -54,4 +54,22 @@ def method13
     return arr
 end
 
-print method13
+def method25
+    path = 'task4text.txt'
+    arr = iff(path)
+    a = 2
+    b = 6
+
+    arr = arr.slice(a..b)
+    min = arr[0]
+
+    for item in arr
+        if item < min
+            min = item
+        end
+    end
+
+    return min
+end
+
+print method25
