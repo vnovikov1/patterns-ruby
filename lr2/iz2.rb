@@ -87,4 +87,30 @@ def method37
     return k
 end
 
-puts "amount - #{method37}"
+def method49
+    def isprime(n)
+        if n % 2 == 0
+            return n == 2
+        end
+        d = 3
+        while d * d <= n && n % d != 0
+            d += 2
+        end
+        return d * d > n
+    end
+
+    arr = gets.chomp.split.map(&:to_i)
+    primeArr = []
+
+    for item in arr
+        for i in 2..item
+            if item % i == 0 && isprime(i)
+                primeArr.push(i)
+            end
+        end
+    end
+
+    return primeArr.uniq
+end
+
+print method49
