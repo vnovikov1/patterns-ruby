@@ -72,4 +72,19 @@ def method25
     return min
 end
 
-print method25
+def method37
+    path = 'task4text.txt'
+    arr = iff(path)
+
+    k = 0
+    for i in 1...arr.size
+        if arr[i] < arr[i-1]
+            k += 1 
+            puts "index - #{i}"
+        end
+    end
+
+    return k
+end
+
+puts "amount - #{method37}"
