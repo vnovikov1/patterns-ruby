@@ -60,16 +60,14 @@ def method25
     a = 2
     b = 6
 
-    arr = arr.slice(a..b)
-    min = arr[0]
-
-    for item in arr
-        if item < min
-            min = item
+    max = arr[0]
+    
+    for i in a..b
+        if arr[i] > max
+            max = arr[i]
         end
     end
-
-    return min
+    return max
 end
 
 def method37
@@ -113,4 +111,4 @@ def method49
     return primeArr.uniq
 end
 
-print method49
+print method25
