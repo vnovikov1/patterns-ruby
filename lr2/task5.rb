@@ -23,7 +23,7 @@ def h()
 количество элементов вторым аргументом.\n"
 end
 
-def select_include(argv)
+def select_input(argv)
     if ARGV.size != 2
         puts "Аргументов программы должно быть 2"
         puts
@@ -55,7 +55,7 @@ def main()
     if ARGV.empty? or ARGV.include?('-h')
         puts h
     else
-        print select_include(ARGV)
+        print select_input(ARGV)
     end
 end
 
