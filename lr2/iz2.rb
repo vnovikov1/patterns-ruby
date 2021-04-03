@@ -1,24 +1,33 @@
-def input(amount)
-    amount = amount.to_i
-    arr = Array.new
-
-    for item in 1..amount
-        item = STDIN.gets.chomp
-        arr.push(item)
-    end
-
-    return arr.map(&:to_i)
+def input
+    return gets.chomp.split().map(&:to_i)
 end
 
 def iff(path)
     file = File.new(path, "r:UTF-8")
-    content = file.read
-    return content.split.map(&:to_i)
+    arr = file.read
+    return arr.split.map(&:to_i)
 end
 
-def method1
-    path = 'task4text.txt'
-    arr = iff(path)
+def select_input()
+    puts "Выберите способа задания массива"
+    puts "1. - С клавиатуры"
+    puts "2. - С файла"
+
+    way = gets.chomp
+
+    if way == "1"
+        print "Введите элементы через пробел: "
+        arr = input()
+        return arr
+
+    elsif way == "2"
+        print "Введите путь до файла с массивом: "
+        arr = iff(gets.chomp)
+        return arr
+    end
+end
+
+def method1(arr)
     max = arr[0]
 
     for i in 0...arr.size
@@ -31,9 +40,7 @@ def method1
     return arr.size - index - 1
 end
 
-def method13
-    path = 'task4text.txt'
-    arr = iff(path)
+def method13(arr)
     min = arr[0]
 
     for i in 0...arr.size
@@ -54,12 +61,7 @@ def method13
     return arr
 end
 
-def method25
-    path = 'task4text.txt'
-    arr = iff(path)
-    a = 2
-    b = 6
-
+def method25(arr, a, b)
     max = arr[0]
     
     for i in a..b
@@ -67,25 +69,26 @@ def method25
             max = arr[i]
         end
     end
+    
     return max
 end
 
-def method37
-    path = 'task4text.txt'
-    arr = iff(path)
-
+def method37(arr)
     k = 0
+    
+    print "Индексы - "
     for i in 1...arr.size
         if arr[i] < arr[i-1]
             k += 1 
-            puts "index - #{i}"
+            print "#{i} "
         end
     end
+    puts
 
     return k
 end
 
-def method49
+def method49(arr)
     def isprime(n)
         if n % 2 == 0
             return n == 2
@@ -97,7 +100,6 @@ def method49
         return d * d > n
     end
 
-    arr = gets.chomp.split.map(&:to_i)
     primeArr = []
 
     for item in arr
@@ -111,4 +113,29 @@ def method49
     return primeArr.uniq
 end
 
-print method25
+def main
+    puts "Выберите задачу:"
+    puts "1. - 6.1"
+    puts "2. - 6.13"
+    puts "3. - 6.25"
+    puts "4. - 6.37"
+    puts "5. - 6.49"
+
+    input = gets.chomp
+    case input
+    when '1'
+        puts "Количество элементов после последнего максимального - #{method1(select_input())}"
+    when '2'
+        puts "Результирующий массив - #{method13(select_input())}"
+    when '3'
+        print "Введите (a, b) через пробел: "
+        a, b = gets.chomp.split.map(&:to_i)
+        puts "Максимальный элемент из интервала a..b - #{method25(select_input(), a, b)}"
+    when '4'
+        puts "Количество чисел меньше левого соседа - #{method37(select_input())}"
+    when '5'
+        puts "Cписок всех положительных простых делителей - #{method49(select_input())}"
+    end
+end
+
+main()
