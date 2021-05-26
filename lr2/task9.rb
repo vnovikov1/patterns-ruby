@@ -15,3 +15,9 @@ def russianSym(str)
     end
     return k
 end
+
+def is_palindrome(str)
+    if str == str.reverse
+        return TRUE
+    end
+end
