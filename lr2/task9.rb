@@ -21,3 +21,7 @@ def is_palindrome(str)
         return TRUE
     end
 end
+
+def date(str)
+    return str.scan(/([0-2]\d|3[0-1]).(0[1-9]|1[0-2]).(\d{4})/).map{|e| e.join('.')}.join(" ")
+end
