@@ -25,3 +25,31 @@ end
 def date(str)
     return str.scan(/([0-2]\d|3[0-1]).(0[1-9]|1[0-2]).(\d{4})/).map{|e| e.join('.')}.join(" ")
 end
+
+def main
+    puts "Выберите задачу:"
+    puts "1. - 9.1"
+    puts "2. - 9.9"
+    puts "3. - 9.18"
+
+    incase = gets.chomp
+    case incase
+    when '1'
+        puts "Количество русских символов - #{russianSym(input())}"
+    when '2'
+        if is_palindrome(input())
+            puts "Строка - палиндром"
+            else
+                puts "Строка - не палиндром"
+        end
+    when '3'
+        arr = date(input())
+        if arr.empty? 
+            puts "Нет дат"
+        else
+            puts arr
+        end
+    end
+end
+
+main()
