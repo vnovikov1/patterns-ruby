@@ -18,9 +18,12 @@ class Phone
             self.camera= camera
         end
     end
+
+    def to_s
+        return self.brand + " - " + self.model.to_s + " - " + self.release_date
+    end
 end
 
 iphone = Phone.new("apple", "iphone 11", "1.12.2021", "black", 75000, "6 inch", "64 gb", "4 gb", "ios", "12 mp")
 
 nokia = Phone.new("nokia", "3310", "1.12.2000", "black", 5000, "1 inch", "512 mb", "nokia os")
-
