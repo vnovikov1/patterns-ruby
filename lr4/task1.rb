@@ -47,9 +47,25 @@ class Phone
           self.release_date= new_val.join(".")
         end
     end
-    
+
+    def correct_memory
+        unit = []
+        unit = self.memory.split
+
+        if self.memory.split.size == 1
+            raise "Uncorrect input memory"
+        else
+            s = ""
+            unit.each do |item|
+                if item[/^\d+$/] or item == "mb" or item == "gb"
+                    s += item
+                end
+            end
+            self.memory= s
+        end
+    end
 end
 
-iphone = Phone.new("apple", "iphone 11", "1.12.2021", "black", 75000, "6 inch", "64 gb", "4 gb", "ios", "12 mp")
+iphone = Phone.new("apple", "iphone 11", "1.12.2021", "black", 75000, "6 inch", "64 sadas gb", "4 gb", "ios", "12 mp")
 
-nokia = Phone.new("nokia", "3310", "1.12.2000", "black", 5000, "1 inch", "512 mb", "nokia os")
+nokia = Phone.new("nokia", "3310", "1.12.2000", "black", 5000, "1 inch", "512 mb asd", "nokia os")
